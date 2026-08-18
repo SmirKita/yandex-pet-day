@@ -5,7 +5,28 @@ const modalBackdrop = document.querySelector('.modal-backdrop');
 const modal = document.querySelector('.modal');
 const toast = document.querySelector('.toast');
 const pageRegions = [...document.querySelectorAll('header, main, footer')];
+const themeButtons = [...document.querySelectorAll('[data-theme-value]')];
+const themeColors = { main: '#ffdc2e', neon: '#080b16', pastel: '#fff4ee' };
+const themeStorageKey = 'pet-day-theme';
 let lastFocusedElement = null;
+
+function applyTheme(theme, persist = true) {
+  const nextTheme = Object.hasOwn(themeColors, theme) ? theme : 'main';
+  document.documentElement.dataset.theme = nextTheme;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColors[nextTheme]);
+  themeButtons.forEach((button) => {
+    button.setAttribute('aria-pressed', String(button.dataset.themeValue === nextTheme));
+  });
+  if (!persist) return;
+  try {
+    localStorage.setItem(themeStorageKey, nextTheme);
+  } catch {}
+}
+
+applyTheme(document.documentElement.dataset.theme, false);
+themeButtons.forEach((button) => {
+  button.addEventListener('click', () => applyTheme(button.dataset.themeValue));
+});
 
 function setMenuState(open) {
   menuButton?.setAttribute('aria-expanded', String(open));

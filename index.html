@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="main">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,12 @@
     <meta name="twitter:description" content="Кейсы, тренды и технологии для digital-продуктов в сфере зообизнеса.">
     <meta name="twitter:image" content="https://smirkita.github.io/yandex-pet-day/og.jpg">
     <meta name="twitter:image:alt" content="Афиша Yandex Pet Day в жёлтых, голубых и сиреневых цветах">
+    <script>
+      try {
+        const savedTheme = localStorage.getItem('pet-day-theme');
+        if (['main', 'neon', 'pastel'].includes(savedTheme)) document.documentElement.dataset.theme = savedTheme;
+      } catch {}
+    </script>
     <link rel="stylesheet" href="/src/styles.css">
     <script type="module" src="/src/main.js"></script>
   </head>
@@ -46,6 +52,15 @@
       </nav>
       <a class="button button-small header-cta" href="#register">Участвовать</a>
     </header>
+
+    <section class="theme-switcher" aria-labelledby="theme-switcher-title">
+      <span class="theme-switcher-title" id="theme-switcher-title">Выберите дизайн</span>
+      <div class="theme-options" role="group" aria-labelledby="theme-switcher-title">
+        <button type="button" data-theme-value="main" aria-pressed="true"><span aria-hidden="true"></span>Основной</button>
+        <button type="button" data-theme-value="neon" aria-pressed="false"><span aria-hidden="true"></span>Неон</button>
+        <button type="button" data-theme-value="pastel" aria-pressed="false"><span aria-hidden="true"></span>Пастель</button>
+      </div>
+    </section>
 
     <main id="main" tabindex="-1">
       <section class="hero" id="top">
