@@ -1,22 +1,32 @@
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#site-nav');
+const menuLabel = menuButton?.querySelector('.sr-only');
 const modalBackdrop = document.querySelector('.modal-backdrop');
 const modal = document.querySelector('.modal');
 const toast = document.querySelector('.toast');
+const pageRegions = [...document.querySelectorAll('header, main, footer')];
 let lastFocusedElement = null;
 
+function setMenuState(open) {
+  menuButton?.setAttribute('aria-expanded', String(open));
+  if (menuLabel) menuLabel.textContent = open ? 'Закрыть меню' : 'Открыть меню';
+  document.body.classList.toggle('menu-open', open);
+}
+
 function closeMenu() {
-  menuButton?.setAttribute('aria-expanded', 'false');
-  document.body.classList.remove('menu-open');
+  setMenuState(false);
 }
 
 menuButton?.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') === 'true';
-  menuButton.setAttribute('aria-expanded', String(!open));
-  document.body.classList.toggle('menu-open', !open);
+  setMenuState(!open);
 });
 
 nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+window.matchMedia('(min-width: 721px)').addEventListener?.('change', (event) => {
+  if (event.matches) closeMenu();
+});
 
 document.querySelectorAll('input[name="format"]').forEach((radio) => {
   radio.addEventListener('change', () => {
@@ -103,12 +113,16 @@ document.querySelector('#question-form')?.addEventListener('submit', (event) => 
 function openModal() {
   lastFocusedElement = document.activeElement;
   modalBackdrop.hidden = false;
+  modalBackdrop.setAttribute('aria-hidden', 'false');
+  pageRegions.forEach((region) => { region.inert = true; });
   document.body.classList.add('modal-open');
   modal.querySelector('input')?.focus();
 }
 
 function closeModal() {
   modalBackdrop.hidden = true;
+  modalBackdrop.setAttribute('aria-hidden', 'true');
+  pageRegions.forEach((region) => { region.inert = false; });
   document.body.classList.remove('modal-open');
   lastFocusedElement?.focus();
 }
