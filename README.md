@@ -36,16 +36,16 @@ npm run preview
 
 ## GitHub Pages
 
-Будущий адрес публикации:
+Опубликованный сайт:
 
-`https://USERNAME.github.io/yandex-pet-day/`
+`https://smirkita.github.io/yandex-pet-day/`
 
-После загрузки проекта в репозиторий `yandex-pet-day`:
+Для автоматической публикации:
 
 1. Убедитесь, что файлы находятся в ветке `main`.
 2. Откройте **Settings → Pages**.
 3. В разделе **Build and deployment** выберите **GitHub Actions**.
-4. Workflow `.github/workflows/deploy.yml` автоматически соберёт и опубликует содержимое `dist`.
+4. Workflow `.github/workflows/deploy.yml` автоматически собирает и публикует содержимое `dist` после каждого push в `main`.
 
 ## Структура проекта
 
