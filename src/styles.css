@@ -113,7 +113,7 @@ html[data-theme="pastel"] .host-stamp{background:#59466b;color:#fffaf7;border-co
 @media(prefers-reduced-motion:reduce){.host-stamp{transition:none}.speaker-card:hover .host-stamp{transform:rotate(7deg)}.schedule-row:hover,.schedule-row:focus-within,.schedule-row.is-pet-tap{box-shadow:inset 5px 0 0 var(--coral)!important}html[data-theme="neon"] .schedule-row:hover,html[data-theme="neon"] .schedule-row:focus-within,html[data-theme="neon"] .schedule-row.is-pet-tap{box-shadow:inset 5px 0 0 #26dcff!important}html[data-theme="pastel"] .schedule-row:hover,html[data-theme="pastel"] .schedule-row:focus-within,html[data-theme="pastel"] .schedule-row.is-pet-tap{box-shadow:inset 5px 0 0 #ffb8ad!important}}
 
 /* PET TECH LAB / neon art direction: a live operating system for the pet-tech future */
-html[data-theme="neon"]{--ink:#e9f8ff;--paper:#080b16;--yellow:#26dcff;--lime:#4bf5b4;--lilac:#8d6cff;--blue:#175de8;--coral:#ff4fd8;--focus:#fff36b}
+html[data-theme="neon"]{--ink:#e9f8ff;--paper:#080b16;--yellow:#26dcff;--lime:#4bf5b4;--lilac:#8d6cff;--blue:#175de8;--coral:#ff4fd8;--focus:#fff36b;overflow-x:hidden}
 html[data-theme="neon"] body{font-family:"Courier New",monospace;letter-spacing:-.02em;background-color:#080b16;background-image:linear-gradient(rgba(38,220,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(38,220,255,.045) 1px,transparent 1px);background-size:42px 42px}
 html[data-theme="neon"] h1,html[data-theme="neon"] h2,html[data-theme="neon"] h3,html[data-theme="neon"] .brand,html[data-theme="neon"] .button{font-family:Arial,Helvetica,sans-serif}
 html[data-theme="neon"] .site-header{height:86px;padding-inline:clamp(22px,5vw,76px);background:#080b16;border-bottom:1px solid #26dcff;box-shadow:0 0 24px rgba(38,220,255,.2)}
